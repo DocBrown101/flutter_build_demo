@@ -42,6 +42,10 @@ jobs:
         channel: 'beta' # 'dev', 'alpha', default to: 'stable'
         # flutter-version: '1.12.x' # you can also specify exact version of flutter
     
+    - name: Prepare
+      run: |
+        sudo apt-get update
+        sudo apt-get install libblkid-dev
     - run: flutter config --enable-linux-desktop
     - run: flutter doctor
     
