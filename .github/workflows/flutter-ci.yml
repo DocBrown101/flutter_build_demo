@@ -1,14 +1,12 @@
 name: Flutter CI
 
 # This workflow is triggered on pushes to the repository.
-
 on:
   push:
     branches:
     - main
     
 # on: push    # Default will running for every branch.
-    
 jobs:
   build_windows:
     runs-on: windows-latest
@@ -23,7 +21,13 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: build_windows
-          path: build/linux/release/bundle
+          path: build/windows/runner/Release
+      
+      - name: Upload
+        uses: actions/upload-artifact@master
+        with:
+          name: build_windows
+          path: build\windows\runner\Release
 
   build_linux:
     # This job will run on ubuntu virtual machine
